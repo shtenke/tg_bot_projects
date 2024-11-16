@@ -123,8 +123,14 @@ class DB_Manager:
         sql = "DELETE FROM skills WHERE skill_id = ? AND project_id = ? " # Запиши сюда правильный SQL запрос
         self.__executemany(sql, [(skill_id, project_id)])
 
+    def Alter(self):
+        conn = sqlite3.connect(self.database)
+        with conn:
+            alter_query = "ALTER TABLE projects ADD COLUMN photo TEXT"
+            conn.execute(alter_query)
 
 if __name__ == '__main__':
     manager = DB_Manager(DATABASE)
     manager.create_tables()
     manager.default_insert()
+    manager.Alter()
