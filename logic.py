@@ -129,8 +129,17 @@ class DB_Manager:
             alter_query = "ALTER TABLE projects ADD COLUMN photo TEXT"
             conn.execute(alter_query)
 
+    def delete_status_id(self,status_id):
+        sql = "DELETE FROM status WHERE status_id = ?" # Запиши сюда правильный SQL запрос
+        self.__executemany(sql, [(status_id,)])
+
+
+
+
+
 if __name__ == '__main__':
     manager = DB_Manager(DATABASE)
     manager.create_tables()
     manager.default_insert()
     manager.Alter()
+    manager.delete_status_id(1)
