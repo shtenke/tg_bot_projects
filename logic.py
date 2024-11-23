@@ -142,4 +142,3 @@ if __name__ == '__main__':
     manager.create_tables()
     manager.default_insert()
     manager.Alter()
-    manager.delete_status_id(1)
